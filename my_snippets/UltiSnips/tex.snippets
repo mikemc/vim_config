@@ -1,0 +1,76 @@
+# vim:ft=snippets:
+##### User defined snippets (mmclaren)
+# Align
+snippet align
+\begin{align} \label{${1}}
+	${2}
+\end{align}
+endsnippet
+
+# Align*
+snippet align*
+\begin{align}
+	${1}
+\end{align}*
+endsnippet
+
+# Fractions
+snippet frac
+\frac{${1}}{${2}}${3}
+endsnippet
+
+# Fractions
+snippet \frac
+\frac{${1}}{${2}}${3}
+endsnippet
+
+# Cases
+snippet cases
+\begin{cases}
+	${1:equation} &\text{for }${2:case}\\\\
+	${3}
+\end{cases}
+endsnippet
+
+# Matching large parentheses, brackets, etc
+snippet (
+\left(${1: }\right)${2}
+endsnippet
+
+snippet [
+\left[${1: }\right]${2}
+endsnippet
+
+snippet \{
+\left\\{${1: }\right\\}${2}
+endsnippet
+
+## For beamer:
+# Frame
+snippet frame
+\begin{frame}{${1}}
+	${2}
+\end{frame}
+endsnippet
+
+# Notes
+snippet note
+\note[item]<${1}>{${2}}
+endsnippet
+snippet notes
+\note[itemize] { 
+	\item ${1}
+}
+endsnippet
+
+# Figures and subfigures
+snippet subf "Subfigure environment" b
+\begin{subfigure}[${2:htpb}]{${3:0.8}\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{${4:name.ext}}
+	\caption{${4/(\w+)\.\w+/\u$1/}$0}
+	\label{fig:${4/(\w+)\.\w+/$1/}}
+\end{subfigure}
+endsnippet
+
+
