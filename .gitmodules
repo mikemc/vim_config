@@ -16,3 +16,9 @@
 [submodule "pack/my_plugins/start/vim-sensible"]
 	path = pack/my_plugins/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule "pack/my_plugins/start/ultisnips"]
+	path = pack/my_plugins/start/ultisnips
+	url = https://github.com/sirver/ultisnips
+[submodule "pack/my_plugins/start/vim-snippets"]
+	path = pack/my_plugins/start/vim-snippets
+	url = https://github.com/honza/vim-snippets
