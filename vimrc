@@ -39,7 +39,7 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50	" keep 50 lines of command line history
+set history=200	" keep # lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set showmode	" show current mode
@@ -121,6 +121,12 @@ endif
 " mksession options
 "set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages
 
+" Column at textwidth
+set colorcolumn=+1        " highlight column after 'textwidth'
+" color setting seems to get overruled by colorscheme, so changed in
+" wombat.vim
+" highlight ColorColumn ctermbg=lightgrey guibg=#303030
+
 " Java specific
 autocmd FileType java setlocal  tabstop=2
 autocmd FileType java setlocal  softtabstop=2
@@ -135,14 +141,6 @@ autocmd FileType python setlocal  shiftwidth=4
 " autocmd FileType python nnoremap <buffer> <leader>ll V:ScreenSend<CR>
 " autocmd FileType python nnoremap <buffer> <F4> :'<,'>ScreenSend<CR>
 
-" Use arduino.vim syntax highlighting on .pde files
-au BufNewFile,BufRead *.pde setf arduino
-autocmd FileType arduino set cindent
-autocmd FileType arduino setlocal  tabstop=2
-autocmd FileType arduino setlocal  softtabstop=2
-autocmd FileType arduino setlocal  shiftwidth=2
-autocmd FileType arduino setlocal  textwidth=79
-
 " Statusline
 ":set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 ":set laststatus=2
@@ -150,12 +148,12 @@ autocmd FileType arduino setlocal  textwidth=79
 """"" Keyboard mappings
 
 " Move between split windows more quickly
-if has("gui_running")
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
-endif
+" if has("gui_running")
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" endif
 
 " run current file in Python interpretter
 " :map <F5> :w<CR>:!xfce4-terminal -H -e python "%:p:h/%" &<CR>

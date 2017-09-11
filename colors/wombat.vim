@@ -52,7 +52,7 @@ hi Function 	guifg=#cae682 gui=none
 hi Type 		guifg=#cae682 gui=none
 hi Statement 	guifg=#8ac6f2 gui=none
 hi Keyword		guifg=#8ac6f2 gui=none
-" Changed for vim otl
+" PreProc color changed for vim otl
 " hi PreProc 		guifg=#e5786d gui=none
 hi PreProc   	guifg=#ff9800 gui=none
 hi Number		guifg=#e5786d gui=none
@@ -63,3 +63,6 @@ hi Special		guifg=#e7f6da gui=none
 " Identifier
 " Constant
 " PreProc
+
+" Added by user
+highlight ColorColumn guibg=#303030
