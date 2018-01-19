@@ -10,9 +10,6 @@
 [submodule "pack/my_plugins/start/vimoutliner"]
 	path = pack/my_plugins/start/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner
-[submodule "pack/my_plugins/start/tcomment_vim"]
-	path = pack/my_plugins/start/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim
 [submodule "pack/my_plugins/start/vim-sensible"]
 	path = pack/my_plugins/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
@@ -22,3 +19,21 @@
 [submodule "pack/my_plugins/start/vim-snippets"]
 	path = pack/my_plugins/start/vim-snippets
 	url = https://github.com/honza/vim-snippets
+[submodule "pack/my_plugins/start/Nvim-R"]
+	path = pack/my_plugins/start/Nvim-R
+	url = https://github.com/jalvesaq/Nvim-R
+[submodule "pack/my_plugins/start/vim-pandoc"]
+	path = pack/my_plugins/start/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc
+[submodule "pack/my_plugins/start/vim-rmarkdown"]
+	path = pack/my_plugins/start/vim-rmarkdown
+	url = https://github.com/vim-pandoc/vim-rmarkdown
+[submodule "pack/my_plugins/start/vim-pandoc-syntax"]
+	path = pack/my_plugins/start/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax
+[submodule "pack/my_plugins/start/vim-commentary"]
+	path = pack/my_plugins/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "pack/my_plugins/start/tcomment_vim"]
+	path = pack/my_plugins/start/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
