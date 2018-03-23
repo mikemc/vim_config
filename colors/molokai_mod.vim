@@ -9,7 +9,7 @@
 "
 
 set background=dark
-let g:colors_name="molokai"
+let g:colors_name="molokai_mod"
 
 " Basic Layout {{{
 
@@ -116,7 +116,7 @@ hi IndentGuides                  guibg=#373737
 hi SignColumn      guifg=#A6E22E guibg=#151617
 hi SpecialChar     guifg=#F92672               gui=bold
 hi SpecialComment  guifg=#465457               gui=bold
-hi Special         guifg=#66D9EF guibg=bg      gui=italic
+hi Special         guifg=#66D9EF guibg=bg      gui=none
 hi SpecialKey      guifg=#888A85               gui=italic
 hi Statement       guifg=#F92672               gui=bold
 hi StatusLine      guifg=#262626 guibg=fg

@@ -3,7 +3,7 @@
 " execute pathogen#infect()
 
 " set font
-set guifont=DejaVu\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 11
 
 " Take care of color scheme in console
 if !has("gui_running")
@@ -14,12 +14,13 @@ if !has("gui_running")
     "set t_Co=88
     "set t_AB=^[[48;5;%dm
     "set t_AF=^[[38;5;%dm
-    let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-    colorscheme koehler
+    " let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+    colorscheme molokai_mod
 endif
 " set background in gvim
 if has("gui_running")
-    colorscheme wombat
+    colorscheme molokai_mod
+    " colorscheme wombat
     set guioptions-=m " remove menu, gui tabs, and toolbar
     set guioptions-=T " remove toolbar
     set guioptions-=e " remove gui tabs
@@ -121,14 +122,20 @@ endif
 " mksession options
 "set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages
 
-" Java specific
+" Statusline
+":set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+":set laststatus=2
+
+"""" File specific options
+
+" Java
 autocmd FileType java setlocal  tabstop=2
 autocmd FileType java setlocal  softtabstop=2
 autocmd FileType java setlocal  shiftwidth=2
 " Text 
 autocmd FileType text setlocal  textwidth=79
 " autocmd FileType text setlocal  spell
-" Python specific
+" Python
 autocmd FileType python setlocal  tabstop=4
 autocmd FileType python setlocal  softtabstop=4
 autocmd FileType python setlocal  shiftwidth=4
@@ -143,19 +150,20 @@ autocmd FileType arduino setlocal  softtabstop=2
 autocmd FileType arduino setlocal  shiftwidth=2
 autocmd FileType arduino setlocal  textwidth=79
 
-" Statusline
-":set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
-":set laststatus=2
+" vimoutliner (*.otl)
+" au BufEnter *.otl setlocal tabstop=2
+" au BufEnter *.otl setlocal shiftwidth=2
+" autocmd FileType votl colorscheme votl_wombat
 
 """"" Keyboard mappings
 
 " Move between split windows more quickly
-if has("gui_running")
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
-endif
+" if has("gui_running")
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" endif
 
 " run current file in Python interpretter
 " :map <F5> :w<CR>:!xfce4-terminal -H -e python "%:p:h/%" &<CR>
@@ -187,15 +195,6 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 " Toggle spell check
 nn <F5> :setlocal spell! spell?<CR>
 
-if has("gui_running")
-    colorscheme wombat
-    set guioptions-=m " remove menu, gui tabs, and toolbar
-    set guioptions-=T " remove toolbar
-    set guioptions-=e " remove gui tabs
-    set guioptions-=r " remove right-hand scroll bar
-    set guioptions-=L " remove left-hand scroll bar
-endif
-
 """"" Plugins
 
 " Change LocalLeader from \
@@ -204,6 +203,7 @@ let maplocalleader = ","
 "" UltiSnips configuration
 " Change from default "<tab>" to maintain normal tab function
 let g:UltiSnipsExpandTrigger = "<c-h>"
+let g:UltiSnipsExpandTrigger = "<c-l>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -224,15 +224,54 @@ let g:UltiSnips.snipmate_ft_filter = {
     \ 'default' : {'filetypes': ["FILETYPE"] },
 \ }
 
-"" Knitr and r-plugin
-" " Highlight chunk headers in knitr .Rnw files as R code
-" let rrst_syn_hl_chunk = 1
-" let rmd_syn_hl_chunk = 1
-" let vimrplugin_assign = 0
-" " r-plugin-vim stuff
-" " Disable commands in insert mode
-" let g:vimrplugin_insert_mode_cmds = 0
+"""" Nvim-r
+" Set _ expansion behavior
+" Option 3 expands '_' only when preceded by a space and followed by a
+" non-word char
+let R_assign = 3
+" set a minimum source editor width
+let R_min_editor_width = 80
+" make sure the console is at the bottom by making it really wide
+" let R_rconsole_width = 1000
+" show arguments for functions during omnicompletion
+let R_show_args = 1
+" Don't expand a dataframe to show columns by default
+" let R_objbr_opendf = 0
+" Use Ctrl+Space to do omnicompletion:
+if has("nvim") || has("gui_running")
+   inoremap <C-Space> <C-x><C-o>
+else
+   inoremap <Nul> <C-x><C-o>
+endif
+" Press the space bar to send lines and selection to R:
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
+" Shortcuts to mimic Rstudio behavior for package development. Using
+" LocalLeader instead of Ctrl, but may want to switch to ctrl to keep more LL
+" options.
+" nmap <LocalLeader>L RAction("devtools::load_all()")<CR>
+" imap <LocalLeader>L RAction("devtools::load_all()")<CR>
+" vmap <LocalLeader>L RAction("devtools::load_all()")<CR>
+" Todo: modify to run a 'wa' in vim first
+" Reload package
+map <silent> <LocalLeader>L :call g:SendCmdToR("devtools::load_all()")<CR>
+" Compile documentation
+map <silent> <LocalLeader>D :call g:SendCmdToR("devtools::document()")<CR>
 
+" 9.10. Highlight chunk header as R code~
+let rrst_syn_hl_chunk = 1
+let rmd_syn_hl_chunk = 1
+
+" Other R options. Not sure what plugin is actually using these
+" Change indentation style indent by four spaces instead of to the last open
+" parentheses
+let r_indent_align_args = 0
+let r_indent_ess_comments = 0
+let r_indent_ess_compatible = 0
+
+" configuration for vim-pandoc
+" let g:pandoc#modules#disabled = ["folding", "spell"]
+let g:pandoc#syntax#conceal#use = 0
 
 """"" Tools
 

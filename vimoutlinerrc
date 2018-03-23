@@ -30,12 +30,14 @@ let g:vo_modules_load = "checkbox:tags:smart_paste"
 "setlocal smartcase			" searches use smart case
 "setlocal wrapmargin=5
 "setlocal tw=78
-"setlocal tabstop=4			" tabstop and shiftwidth must match
-"setlocal shiftwidth=4			" values from 2 to 8 work well
+setlocal tabstop=2			" tabstop and shiftwidth must match
+setlocal shiftwidth=2			" values from 2 to 8 work well
 "setlocal background=dark		" for dark backgrounds
 "setlocal nowrap
 
 " colorscheme votl_light			" set a VO specific colorscheme
+" colorscheme votl_wombat			" set a VO specific colorscheme
+" NOTE: This will set the colorscheme for all windows and tabs
 
 "Checkbox Tags
 " Tags can contain any word characters (:help word)
