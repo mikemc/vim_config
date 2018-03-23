@@ -1,6 +1,6 @@
 " Pathogen, https://github.com/tpope/vim-pathogen
-" Disabled in favor of new native plugin loading
-" execute pathogen#infect()
+" Run pathogen to load plugins for older versions of vim
+execute pathogen#infect()
 
 " set font
 set guifont=DejaVu\ Sans\ Mono\ 11
