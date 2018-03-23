@@ -40,7 +40,7 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50	" keep 50 lines of command line history
+set history=200	" keep # lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set showmode	" show current mode
@@ -129,6 +129,13 @@ endif
 """" File specific options
 
 " Java
+" Column at textwidth
+set colorcolumn=+1        " highlight column after 'textwidth'
+" color setting seems to get overruled by colorscheme, so changed in
+" wombat.vim
+" highlight ColorColumn ctermbg=lightgrey guibg=#303030
+
+" Java specific
 autocmd FileType java setlocal  tabstop=2
 autocmd FileType java setlocal  softtabstop=2
 autocmd FileType java setlocal  shiftwidth=2
@@ -154,6 +161,9 @@ autocmd FileType arduino setlocal  textwidth=79
 " au BufEnter *.otl setlocal tabstop=2
 " au BufEnter *.otl setlocal shiftwidth=2
 " autocmd FileType votl colorscheme votl_wombat
+" Statusline
+":set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+":set laststatus=2
 
 """"" Keyboard mappings
 
